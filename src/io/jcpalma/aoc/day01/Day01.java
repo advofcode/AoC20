@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2021 José Carlos Palma <palmahn@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.jcpalma.aoc.day01;
 
@@ -12,11 +23,27 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
+ * Solución para el día 1.
+ * <pre>
+ * --- Day 1: Report Repair ---
+ * 1. Find the two entries that sum to 2020
+ * 2. Find the three entries that sum to 2020
+ * </pre>
  *
- * @author jcpalma
+ * @author José Carlos Palma {@literal <palmahn@gmail.com>}
+ * @version v2020.1
+ * @see <a href="https://adventofcode.com/2020/day/1">Advent of Code (Day 1: Report Repair)</a>
  */
 public class Day01 extends Day {
 
+    /**
+     * Crea una instancia para la solición del día 1.
+     */
+    public Day01() {}
+    
+    /**
+     * Ejecuta la solición para el día 1.
+     */
     @Override
     public void run() {
 

@@ -1,24 +1,41 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2021 José Carlos Palma <palmahn@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package io.jcpalma.aoc.day04;
 
-import java.util.Set;
-
 /**
+ * Representa un campo del pasaporte.
  *
- * @author jcpalma
+ * @author José Carlos Palma {@literal <palmahn@gmail.com>}
+ * @version v2020.4
  */
 public class Field {
 
-    
     private final boolean required;
     private final boolean valid;
     private final String key;
     private final String value;
 
+    /**
+     * Crea una instancia de un campo.
+     *
+     * @param key es el nombre del campo.
+     * @param value es el valor del campo.
+     * @param required indica si es requerido.
+     */
     public Field(String key, String value, boolean required) {
         this.key = key;
         this.required = required;
@@ -26,22 +43,47 @@ public class Field {
         this.valid = checkRules();
     }
 
+    /**
+     * Devuelve el nombre del campo.
+     *
+     * @return el nombre del campo.
+     */
     public String key() {
         return key;
     }
 
+    /**
+     * Devuelve el valor del campo.
+     *
+     * @return el valor del campo.
+     */
     public String value() {
         return this.value;
     }
 
+    /**
+     * Indica si es requerido.
+     *
+     * @return true si es requerido, sino false.
+     */
     public boolean isRequired() {
         return required;
     }
 
-    public boolean isValid() { 
+    /**
+     * Indica si el valor del campo es válido.
+     *
+     * @return true si el valor del campo es válido.
+     */
+    public boolean isValid() {
         return valid;
     }
 
+    /**
+     * Indica si el valor del campo no es válido.
+     *
+     * @return true si el valor del campo no es válido.
+     */
     public boolean isNotValid() {
         return !valid;
     }
@@ -69,7 +111,12 @@ public class Field {
     public int hashCode() {
         return key.hashCode();
     }
-    
+
+    /**
+     * Realiza la validación del valor del campo según las reglas establecidas.
+     *
+     * @return true si el valor es válido.
+     */
     private boolean checkRules() {
         switch (key) {
             case "byr":
@@ -91,6 +138,11 @@ public class Field {
         }
     }
 
+    /**
+     * Válida que el año de nacimiento esté entre 1920 y 2002.
+     *
+     * @return true si está entre 1920 y 2002.
+     */
     private boolean byrIsValid() {
         int year = 0;
         try {
@@ -101,6 +153,11 @@ public class Field {
         return year >= 1920 && year <= 2002;
     }
 
+    /**
+     * Válida que el año de emisión esté entre 2010 y 2020.
+     *
+     * @return true si está entre 2010 y 2020.
+     */
     private boolean iyrIsValid() {
         int year = 0;
         try {
@@ -111,6 +168,11 @@ public class Field {
         return year >= 2010 && year <= 2020;
     }
 
+    /**
+     * Válida que el año de expiración esté entre 2020 y 2030.
+     *
+     * @return true si está entre 2020 y 2030.
+     */
     private boolean eyrIsValid() {
         int year = 0;
         try {
@@ -121,6 +183,13 @@ public class Field {
         return year >= 2020 && year <= 2030;
     }
 
+    /**
+     * Válida que el peso lleve la únidad de medida (cm, in). En caso que sean
+     * cm el peso debe estar entre 150 y 193, si está en pulgadas (in) el peso
+     * debe estar entre 59 y 76.
+     *
+     * @return true si el pesa está entre los valores requeridos.
+     */
     private boolean hgtIsValid() {
         int height = 0;
         if (!value.matches("^[0-9]+(cm|in)$")) {
