@@ -45,7 +45,7 @@ public class Main {
         do {
             System.out.println("--- Choose a day (type 'q' to quit) ---");
             System.out.print("Day: ");
-            String cin = read.nextLine().strip();
+            String cin = args.length > 0 ? args[0] : read.nextLine().strip();
 
             if (cin.matches("^[1-9]|1[0-9]|2[0-5]$")) {
                 try {
@@ -62,7 +62,7 @@ public class Main {
                 }
             }
 
-            if (cin.toLowerCase().matches("q|quit|exit")) {
+            if (cin.toLowerCase().matches("q|quit|exit") || args.length > 0) {
                 break;
             }
 
